@@ -72,7 +72,7 @@ const Footer = () => {
       <div className="flex-[4]">
         <div className="flex flex-col gap-10 w-1/2">
           <div>
-            <h2 className="text-5xl font-bold">LOGO</h2>
+            <h2 className="text-5xl font-bold">LOGOO</h2>
           </div>
           <div className="flex justify-between">
             {socialMedia.map((social, index) => (
