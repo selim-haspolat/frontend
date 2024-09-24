@@ -12,6 +12,9 @@ module.exports = {
         foreground: "var(--foreground)",
         primary: "rgb(53, 97, 254)",
       },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(90deg, rgba(0, 106, 255, 0) 0%, rgba(53, 97, 254, 1) 50%, rgba(53, 97, 254, 1) 100%)',
+      },
     },
   },
   plugins: [],

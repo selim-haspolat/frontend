@@ -6,12 +6,13 @@ const Hero = () => {
     <div className="flex justify-between items-center gap-5">
       <div className="bg-hero-pattern flex-1 bg-cover bg-center">
         <div className="flex flex-col items-start gap-4">
-          <h1 className="text-8xl font-bold leading-[1.1]">Digital Solutions</h1>
+          <h1 className="text-8xl font-bold leading-[1.1]">
+            Digital Solutions
+          </h1>
           <p className="text-gray-500">
-            We craft meaningful identities that leave a lasting impression on
-            your audience
+            Unleash Your Brand's Full Potential with Creative Solutions
           </p>
-          <Button className={'mt-5'}>Get Started</Button>
+          <Button className={"mt-5"}>Get Started</Button>
         </div>
       </div>
 
