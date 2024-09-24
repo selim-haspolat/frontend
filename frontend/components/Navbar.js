@@ -6,7 +6,7 @@ const Navbar = () => {
     <header className="flex justify-between items-center py-3 border-b">
       <div><p className="text-2xl font-bold">LOGO</p></div>
       <nav>
-        <ul className="flex gap-6 font-medium">
+        <ul className="flex gap-6 font-medium text-slate-600">
           <li>
             <Link href={"/"}>Home</Link>
           </li>
@@ -19,7 +19,7 @@ const Navbar = () => {
         </ul>
       </nav>
       <div>
-        <Button>Start Now</Button>
+        <Button>Get Started</Button>
       </div>
     </header>
   );

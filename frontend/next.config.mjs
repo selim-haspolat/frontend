@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ['cdn.pixabay.com'], // Buraya görsel kaynağını ekliyorsun
-      },
+  images: {
+    domains: ["cdn.pixabay.com", "media.istockphoto.com", "www.logolynx.com"], // Buraya görsel kaynağını ekliyorsun
+  },
 };
 
 export default nextConfig;
