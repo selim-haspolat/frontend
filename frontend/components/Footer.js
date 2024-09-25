@@ -78,7 +78,7 @@ const Footer = () => {
             {socialMedia.map((social, index) => (
               // social.icon bir bileşen olduğu için büyük harfle çağırman gerekiyor
               <Button variant="ghost" animation={false} className={"!p-0"}>
-                <social.icon key={index} size={35} className="text-primary" />
+                <social.icon key={index} size={30} className="text-primary" />
               </Button>
             ))}
           </div>
