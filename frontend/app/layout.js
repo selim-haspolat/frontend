@@ -23,11 +23,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[1200px] mx-auto flex flex-col gap-20`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[1200px] mx-auto flex flex-col gap-20 min-h-screen`}
       >
         <Navbar />
         {children}
-        <Footer />
+        <div className="grow flex items-end">
+          <Footer />
+        </div>
       </body>
     </html>
   );
