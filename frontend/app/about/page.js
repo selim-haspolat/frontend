@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import teamImage from "@/assets/undraw_Team_re_0bfe.png";
-import teamImage2 from "@/assets/undraw_Team_up_re_84ok.png";
+import teamImage2 from "@/assets/undraw_Team_spirit_re_yl1v.png";
 
 const AboutPage = () => {
   return (
@@ -20,8 +20,8 @@ const AboutPage = () => {
       <div className="col-span-2 row-span-2">
         <Image height={10000} width={10000} className="w-fit" src={teamImage} />
       </div>
-      <div className="col-span-2 row-span-2">
-        <Image height={10000} width={10000} className="w-fit" src={teamImage2} />
+      <div className="col-span-2 row-span-2 flex items-center">
+        <Image height={10000} width={10000} src={teamImage2} />
       </div>
       <div className="col-span-2 row-span-1 flex flex-col gap-4">
         <h1 className="text-8xl font-semibold">Team</h1>
