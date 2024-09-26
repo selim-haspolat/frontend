@@ -18,6 +18,7 @@ app.use(cookieParser());
 // Routes
 app.use("/api/users", userRouter);
 app.use('/api/auth', authRouter);
+app.use("/api/upload", uploadRouter)
 
 // Error Handler
 app.use((err, req, res, next) => {
