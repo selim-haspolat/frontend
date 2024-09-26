@@ -17,7 +17,7 @@ const Blog = new Schema(
       ref: "User",
       required: true,
     },
-    photos: {
+    imagePath: {
       type: String,
     },
   },

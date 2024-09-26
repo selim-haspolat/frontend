@@ -50,12 +50,12 @@ const BlogPage = () => {
   return (
     <div>
       <label
-        for="uploadFile1"
-        class="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
+        htmlFor="uploadFile1"
+        className="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="w-11 mb-2 fill-gray-500"
+          className="w-11 mb-2 fill-gray-500"
           viewBox="0 0 32 32"
         >
           <path
@@ -73,12 +73,13 @@ const BlogPage = () => {
           id="uploadFile1"
           onChange={handleFileChange}
           accept="image/*"
-          class="hidden"
+          className="hidden"
         />
-        <p class="text-xs font-medium text-gray-400 mt-2">
+        <p className="text-xs font-medium text-gray-400 mt-2">
           PNG, JPG SVG, WEBP, and GIF are Allowed.
         </p>
       </label>
+
       {previewUrl && (
         <div style={{ marginTop: "20px" }}>
           <img
@@ -88,6 +89,7 @@ const BlogPage = () => {
           />
         </div>
       )}
+      <img src="http://localhost:8080/uploads/1727359439359-240047192_882706022338576_8122133245121886458_n.jpg" />
       <Button onClick={handleSubmit} className={"m-10"}>
         Upload Foto
       </Button>
