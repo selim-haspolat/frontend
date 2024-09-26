@@ -18,10 +18,10 @@ const AboutPage = () => {
         </p>
       </div>
       <div className="col-span-2 row-span-2">
-        <Image height={10000} width={10000} className="w-fit" src={teamImage} />
+        <Image height={10000} width={10000} className="w-fit" src={teamImage} alt="team image" />
       </div>
       <div className="col-span-2 row-span-2 flex items-center">
-        <Image height={10000} width={10000} src={teamImage2} />
+        <Image height={10000} width={10000} src={teamImage2}  alt="team image"/>
       </div>
       <div className="col-span-2 row-span-1 flex flex-col gap-4">
         <h1 className="text-8xl font-semibold">Team</h1>

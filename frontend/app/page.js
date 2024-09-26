@@ -1,4 +1,3 @@
-
 // Custom Components
 import Hero from "@/components/Hero";
 import CompaniesList from "@/components/CompaniesList";
@@ -11,7 +10,7 @@ export default function Home() {
       <Hero />
       <CompaniesList />
       <Milestones />
-      <Aafsga />
+      {/* <Aafsga /> */}
     </>
   );
 }
