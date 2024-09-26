@@ -3,23 +3,33 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 // Routes Import
 import userRouter from "./routes/user.js";
 import authRouter from "./routes/auth.js";
-import uploadRouter from './routes/upload.js';
+import uploadRouter from "./routes/upload.js";
 
 const app = express();
 dotenv.config();
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true,
+  withCredentials: true,
+};
+
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors(corsOptions));
+// Statik dosyalar için middleware 
+app.use("/uploads", express.static("uploads"));
 
 // Routes
 app.use("/api/users", userRouter);
-app.use('/api/auth', authRouter);
-app.use("/api/upload", uploadRouter)
+app.use("/api/auth", authRouter);
+app.use("/api/upload", uploadRouter);
 
 // Error Handler
 app.use((err, req, res, next) => {
@@ -32,25 +42,23 @@ app.use((err, req, res, next) => {
   });
 });
 
-
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
     console.log("Connected to Mongodb");
   } catch (error) {
-    console.log("Error connecting to mongodb: \n", error)
+    console.log("Error connecting to mongodb: \n", error);
   }
 };
 
 mongoose.connection.on("disconnected", () => {
   console.warn("Warning: MongoDB connection has been disconnected.");
-  
-  console.log('Trying to reconnect to MongoDB');
+
+  console.log("Trying to reconnect to MongoDB");
   connect();
 });
 
-
-const port = 3000;
+const port = 8080;
 
 app.listen(port, () => {
   connect();
