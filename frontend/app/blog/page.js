@@ -89,7 +89,7 @@ const BlogPage = () => {
           />
         </div>
       )}
-      <img src="http://localhost:8080/uploads/1727359439359-240047192_882706022338576_8122133245121886458_n.jpg" />
+      <img src="http://localhost:8080/uploads/1727361619163-dolandÄ±rÄ±ldÄ±m la.png" />
       <Button onClick={handleSubmit} className={"m-10"}>
         Upload Foto
       </Button>
