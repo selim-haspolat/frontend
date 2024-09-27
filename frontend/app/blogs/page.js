@@ -1,12 +1,24 @@
 "use client";
 
 import BlogCard from "@/components/BlogCard";
-import Button from "@/components/Button";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const BlogPage = () => {
   const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/blogs");
+        setBlogs(response.data);
+      } catch (error) {
+        console.error("Blogları alma hatası:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
 
   // const [file, setFile] = useState(null);
   // const [previewUrl, setPreviewUrl] = useState(null); // Önizleme URL'si
@@ -55,46 +67,19 @@ const BlogPage = () => {
       <div></div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <BlogCard
-          data={{
-            title: "This is a Title",
-            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
-            createdAt: "12.12.2024",
-            createdBy: "selim has",
-          }}
-        />
-        <BlogCard
-          data={{
-            title: "This is a Titlesssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssss",
-            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
-            createdAt: "12.12.2024",
-            createdBy: "selim has",
-          }}
-        />
-        <BlogCard
-          data={{
-            title: "This is a Title",
-            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
-            createdAt: "12.12.2024",
-            createdBy: "selim has",
-          }}
-        />
-        <BlogCard
-          data={{
-            title: "This is a Title",
-            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
-            createdAt: "12.12.2024",
-            createdBy: "selim has",
-          }}
-        />
-        <BlogCard
-          data={{
-            title: "This is a Title",
-            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
-            createdAt: "12.12.2024",
-            createdBy: "selim has",
-          }}
-        />
+        {
+          blogs.map((blog) => (
+            <BlogCard
+              key={blog._id}
+              data={{
+                title: blog.title,
+                photo: `http://localhost:8080/${blog.photo}`,
+                createdAt: blog.createdAt,
+                createdBy: blog.createdBy,
+              }}
+            />
+          ))
+        }
       </div>
 
       {/* <label
