@@ -1,55 +1,103 @@
 "use client";
 
+import BlogCard from "@/components/BlogCard";
 import Button from "@/components/Button";
 import axios from "axios";
 import { useState } from "react";
 
 const BlogPage = () => {
-  const [file, setFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null); // Önizleme URL'si
+  const [blogs, setBlogs] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const [file, setFile] = useState(null);
+  // const [previewUrl, setPreviewUrl] = useState(null); // Önizleme URL'si
 
-    if (!file) {
-      alert("Lütfen bir dosya seçin");
-      return;
-    }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("photo", file); // 'photo' backenddeki isimle eşleşmeli
+  //   if (!file) {
+  //     alert("Lütfen bir dosya seçin");
+  //     return;
+  //   }
 
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+  //   const formData = new FormData();
+  //   formData.append("photo", file); // 'photo' backenddeki isimle eşleşmeli
 
-      console.log(response);
-      console.log(response.data.filePath); // Yüklenen dosya yolunu al
-    } catch (error) {
-      console.error("Dosya yükleme hatası:", error);
-    }
-  };
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:8080/api/upload",
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       }
+  //     );
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile); // Dosyayı ayarla
+  //     console.log(response);
+  //     console.log(response.data.filePath); // Yüklenen dosya yolunu al
+  //   } catch (error) {
+  //     console.error("Dosya yükleme hatası:", error);
+  //   }
+  // };
 
-    if (selectedFile) {
-      const objectUrl = URL.createObjectURL(selectedFile);
-      setPreviewUrl(objectUrl);
-    }
-  };
+  // const handleFileChange = (e) => {
+  //   const selectedFile = e.target.files[0];
+  //   setFile(selectedFile); // Dosyayı ayarla
+
+  //   if (selectedFile) {
+  //     const objectUrl = URL.createObjectURL(selectedFile);
+  //     setPreviewUrl(objectUrl);
+  //   }
+  // };
 
   return (
     <div>
-      <label
+      <div></div>
+
+      <div className="grid grid-cols-4 gap-4">
+        <BlogCard
+          data={{
+            title: "This is a Title",
+            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
+            createdAt: "12.12.2024",
+            createdBy: "selim has",
+          }}
+        />
+        <BlogCard
+          data={{
+            title: "This is a Title",
+            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
+            createdAt: "12.12.2024",
+            createdBy: "selim has",
+          }}
+        />
+        <BlogCard
+          data={{
+            title: "This is a Title",
+            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
+            createdAt: "12.12.2024",
+            createdBy: "selim has",
+          }}
+        />
+        <BlogCard
+          data={{
+            title: "This is a Title",
+            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
+            createdAt: "12.12.2024",
+            createdBy: "selim has",
+          }}
+        />
+        <BlogCard
+          data={{
+            title: "This is a Title",
+            photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
+            createdAt: "12.12.2024",
+            createdBy: "selim has",
+          }}
+        />
+      </div>
+
+      {/* <label
         htmlFor="uploadFile1"
         className="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
       >
@@ -92,7 +140,7 @@ const BlogPage = () => {
       <img src="http://localhost:8080/uploads/1727361619163-dolandÄ±rÄ±ldÄ±m la.png" />
       <Button onClick={handleSubmit} className={"m-10"}>
         Upload Foto
-      </Button>
+      </Button> */}
     </div>
   );
 };
