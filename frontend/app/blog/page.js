@@ -54,7 +54,7 @@ const BlogPage = () => {
     <div>
       <div></div>
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <BlogCard
           data={{
             title: "This is a Title",
@@ -65,7 +65,7 @@ const BlogPage = () => {
         />
         <BlogCard
           data={{
-            title: "This is a Title",
+            title: "This is a Titlesssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssss",
             photo: "http://localhost:8080/uploads/1727454498523-heavy.png",
             createdAt: "12.12.2024",
             createdBy: "selim has",

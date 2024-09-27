@@ -6,7 +6,7 @@ const BlogCard = ({ data }) => {
   console.log(data);
 
   return (
-    <div className="p-3 border rounded-2xl flex flex-col gap-2">
+    <div className="p-3 border rounded-2xl flex flex-col gap-2 h-96">
       <Image
         width={100000}
         height={100000}
@@ -14,9 +14,9 @@ const BlogCard = ({ data }) => {
         className="w-full h-48 object-cover rounded-xl overflow-hidden"
       />
 
-      <div className="flex flex-col gap-4 p-2">
-        <h2 className="text-xl">{title}</h2>
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col gap-4 p-2 grow">
+        <h2 className="text-xl break-all line-clamp-3">{title}</h2>
+        <div className="flex items-center gap-3 justify-end mt-auto">
           <Image
             width={100000}
             height={100000}
