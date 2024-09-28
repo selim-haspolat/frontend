@@ -19,7 +19,10 @@ const Blog = new Schema(
     },
     imagePath: {
       type: String,
+      required: true,
     },
   },
   { timestamps: true }
 );
+
+export default mongoose.model("Blog", Blog, "Blog");

@@ -8,7 +8,7 @@ import cors from "cors";
 // Routes Import
 import userRouter from "./routes/user.js";
 import authRouter from "./routes/auth.js";
-import uploadRouter from "./routes/upload.js";
+import blogRouter from "./routes/blog.js";
 
 const app = express();
 dotenv.config();
@@ -29,7 +29,7 @@ app.use("/uploads", express.static("uploads"));
 // Routes
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/upload", uploadRouter);
+app.use("/api/blog", blogRouter);
 
 // Error Handler
 app.use((err, req, res, next) => {

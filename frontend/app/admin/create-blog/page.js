@@ -13,21 +13,25 @@ const CreateBlogPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!file || !title || !content) {
-      toast("Please fill all fields", {
-        icon: "❌",
-        position: "top-right",
-      });
-      return;
-    }
-
+  
+    // // Eğer file, title veya content boşsa işlemi durdur
+    // if (!file || !title || !content) {
+    //   toast("Please fill all fields", {
+    //     icon: "❌",
+    //     position: "top-right",
+    //   });
+    //   return;
+    // }
+  
     const formData = new FormData();
-    formData.append("photo", file); // 'photo' backenddeki isimle eşleşmeli
-
+    formData.append("photo", file);  // 'photo' backenddeki dosya alanı
+    formData.append("title", title); // Blog başlığı
+    formData.append("content", content); // Blog içeriği
+  
     try {
+      // Tek bir API isteği ile hem fotoğraf hem de blog post'u gönderiliyor
       const response = await axios.post(
-        "http://localhost:8080/api/upload",
+        "http://localhost:8080/api/blog",
         formData,
         {
           headers: {
@@ -35,26 +39,19 @@ const CreateBlogPage = () => {
           },
         }
       );
-
-      const imagePath = response.data.filePath;
-
-      await axios.post("http://localhost:8080/api/blog", {
-        title,
-        content,
-        imagePath,
-      });
-
+  
       toast("Blog uploaded successfully", {
         icon: "🚀",
         position: "top-right",
       });
     } catch (error) {
-      toast("An error occurred", {
+      toast(error.response.data.message, {
         icon: "❌",
         position: "top-right",
       });
     }
   };
+  
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
