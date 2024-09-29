@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import Blog from "../models/blog.js";
 import fs from "fs";
+import { createError } from "../utils/error.js";
 
 const router = express.Router();
 
@@ -16,47 +17,58 @@ const storage = multer.diskStorage({
     cb(null, "uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, `${Date.now()}-${file.originalname}`);
+    cb(null, `${Date.now()}`);
   },
 });
 
-const upload = multer({ storage });
-
-// Blog oluşturma ve fotoğraf yükleme route'u
-router.post("/", upload.single("photo"), async (req, res, next) => {
-  try {
-    const { title, content } = req.body;
-    const file = req.file;
-
-    if (!title || !content || !file) {
-      return res.status(400).json({
-        success: false,
-        message: "Please fill all fields",
-      });
-    }
-
-    // Fotoğrafın yolu
-    const imagePath = `/uploads/${file.filename}`;
-
-    const blog = new Blog({
-      title,
-      content,
-      createdBy: req.user._id,
-      imagePath,
-    });
-
-    await blog.save();
-
-    return res.status(201).json({
-      success: true,
-      data: blog,
-    });
-  } catch (error) {
-    next(error);
+// File filter: Sadece resim dosyalarını kabul et
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb(createError(400, "Only .png, .jpg and .jpeg format allowed!"), false);
   }
+};
+
+// Multer ayarları
+const upload = multer({
+  fileFilter,
+  storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5, // Max 5 MB
+  },
 });
 
-// Tüm blogları listeleme route'u
+router.post(
+  "/",
+  upload.single("photo"),
+  async (req, res, next) => {
+    try {
+      const { title, content } = req.body;
+      const file = req.file;
+
+      const imagePath = `/uploads/${file.filename}`;
+
+      const blog = new Blog({
+        title,
+        content,
+        createdBy: 1,
+        // createdBy: req.user._id,
+        imagePath,
+      });
+
+      await blog.save();
+
+      return res.status(201).json({
+        success: true,
+        data: blog,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 router.get("/", async (req, res, next) => {
   try {
     const blogs = await Blog.find();

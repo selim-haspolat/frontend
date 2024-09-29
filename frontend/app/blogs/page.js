@@ -10,8 +10,8 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/blogs");
-        setBlogs(response.data);
+        const response = await axios.get("http://localhost:8080/api/blog");
+        setBlogs(response.data.data);
       } catch (error) {
         console.error("Blogları alma hatası:", error);
       }
@@ -31,7 +31,7 @@ const BlogPage = () => {
               key={blog._id}
               data={{
                 title: blog.title,
-                photo: `http://localhost:8080/${blog.photo}`,
+                photo: `http://localhost:8080${blog.imagePath}`,
                 createdAt: blog.createdAt,
                 createdBy: blog.createdBy,
               }}

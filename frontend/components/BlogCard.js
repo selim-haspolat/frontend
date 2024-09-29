@@ -1,3 +1,4 @@
+import formatISODate from "@/helper/date-converter";
 import Image from "next/image";
 
 const BlogCard = ({ data }) => {
@@ -12,6 +13,7 @@ const BlogCard = ({ data }) => {
         height={100000}
         src={photo}
         className="w-full h-48 object-cover rounded-xl overflow-hidden"
+        alt={title}
       />
 
       <div className="flex flex-col gap-4 p-2 grow">
@@ -21,10 +23,11 @@ const BlogCard = ({ data }) => {
             width={100000}
             height={100000}
             src={photo}
+            alt={title}
             className="w-7 h-7 object-cover rounded-full overflow-hidden"
           />
           <p>{createdBy}</p>
-          <p className="ml-auto">{createdAt}</p>
+          <p className="ml-auto text-gray-600">{formatISODate(createdAt)}</p>
         </div>
       </div>
     </div>

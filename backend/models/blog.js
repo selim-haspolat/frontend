@@ -12,11 +12,11 @@ const Blog = new Schema(
       type: String,
       required: true,
     },
-    createdBy: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
+    // createdBy: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "User",
+    //   required: true,
+    // },
     imagePath: {
       type: String,
       required: true,
