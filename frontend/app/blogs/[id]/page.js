@@ -33,11 +33,11 @@ const BlogDetail = ({ params }) => {
 
   return (
     <div className="flex gap-10">
-      <div className="flex-1 flex flex-col gap-20">
+      <div className="flex-[3] flex flex-col gap-20">
         <h1 className="text-6xl font-bold border-b">{blog?.title}</h1>
-        <p className="text-justify">{blog?.content}</p>
+        <p className="text-justify text-lg">{blog?.content}</p>
       </div>
-      <div className="flex-1">
+      <div className="flex-[2]">
         <Image
           className="w-full"
           src={ImageRef(blog?.imagePath)}
