@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 import ImageRef from "@/helper/image-ref";
+import Loading from "@/components/Loading";
 
 const BlogDetail = ({ params }) => {
-  const [blog, setBlog] = useState([]);
+  const [blog, setBlog] = useState(null);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -26,14 +27,25 @@ const BlogDetail = ({ params }) => {
     fetchPost();
   }, []);
 
-  console.log(blog);
+  if (!blog) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex gap-10">
-      <div>
-        <h1 className="text-6xl font-bold">{blog?.title}</h1>
+      <div className="flex-1 flex flex-col gap-20">
+        <h1 className="text-6xl font-bold border-b">{blog?.title}</h1>
+        <p className="text-justify">{blog?.content}</p>
       </div>
-      <div><Image src={ImageRef(imagePath)} alt={blog.title} width={1000} height={1000}/></div>
+      <div className="flex-1">
+        <Image
+          className="w-full"
+          src={ImageRef(blog?.imagePath)}
+          alt={blog.title}
+          width={1000}
+          height={1000}
+        />
+      </div>
     </div>
   );
 };
