@@ -2,6 +2,8 @@ import formatISODate from "@/helper/date-converter";
 import Image from "next/image";
 import Link from "next/link";
 
+import ImageRef from "@/helper/image-ref";
+
 const BlogCard = ({ blog }) => {
   const { title, imagePath, createdAt, createdBy, _id } = blog;
 
@@ -11,7 +13,7 @@ const BlogCard = ({ blog }) => {
         <Image
           width={100000}
           height={100000}
-          src={`http://localhost:8080${imagePath}`}
+          src={ImageRef(imagePath)}
           className="w-full h-48 object-cover rounded-xl overflow-hidden"
           alt={title}
         />
@@ -22,7 +24,7 @@ const BlogCard = ({ blog }) => {
             <Image
               width={100000}
               height={100000}
-              src={`http://localhost:8080${imagePath}`}
+              src={ImageRef(imagePath)}
               alt={title}
               className="w-7 h-7 object-cover rounded-full overflow-hidden"
             />
