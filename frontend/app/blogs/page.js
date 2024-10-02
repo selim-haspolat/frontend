@@ -10,7 +10,7 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/blog");
+        const response = await instance.get("/blog");
         setBlogs(response.data.data);
       } catch (error) {
         console.error("Blogları alma hatası:", error);

@@ -4,10 +4,8 @@ import Image from "next/image";
 const BlogCard = ({ data }) => {
   const { title, photo, createdAt, createdBy } = data;
 
-  console.log(data);
-
   return (
-    <div className="p-3 border rounded-2xl flex flex-col gap-2 h-96">
+    <div className="p-3 border rounded-2xl flex flex-col gap-2 h-96 cursor-pointer">
       <Image
         width={100000}
         height={100000}

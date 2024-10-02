@@ -39,35 +39,31 @@ const upload = multer({
   },
 });
 
-router.post(
-  "/",
-  upload.single("photo"),
-  async (req, res, next) => {
-    try {
-      const { title, content } = req.body;
-      const file = req.file;
+router.post("/", upload.single("photo"), async (req, res, next) => {
+  try {
+    const { title, content } = req.body;
+    const file = req.file;
 
-      const imagePath = `/uploads/${file.filename}`;
+    const imagePath = `/uploads/${file.filename}`;
 
-      const blog = new Blog({
-        title,
-        content,
-        createdBy: 1,
-        // createdBy: req.user._id,
-        imagePath,
-      });
+    const blog = new Blog({
+      title,
+      content,
+      createdBy: 1,
+      // createdBy: req.user._id,
+      imagePath,
+    });
 
-      await blog.save();
+    await blog.save();
 
-      return res.status(201).json({
-        success: true,
-        data: blog,
-      });
-    } catch (error) {
-      next(error);
-    }
+    return res.status(201).json({
+      success: true,
+      data: blog,
+    });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 router.get("/", async (req, res, next) => {
   try {
@@ -76,6 +72,23 @@ router.get("/", async (req, res, next) => {
     return res.status(200).json({
       success: true,
       data: blogs,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+
+    if (!blog) {
+      return next(createError(404, "Blog not found"));
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: blog,
     });
   } catch (error) {
     next(error);

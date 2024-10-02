@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/Button";
+import instance from "@/helper/axios-intance";
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -15,7 +16,7 @@ const CreateBlogPage = () => {
     e.preventDefault();
 
     if (!file || !title || !content) {
-      return  toast("Please fill all fields", {
+      return toast("Please fill all fields", {
         icon: "❌",
         position: "top-right",
       });
@@ -29,15 +30,11 @@ const CreateBlogPage = () => {
 
     try {
       // Tek bir API isteği ile hem fotoğraf hem de blog post'u gönderiliyor
-      const response = await axios.post(
-        "http://localhost:8080/api/blog",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await instance.post("/blog", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       toast("Blog uploaded successfully", {
         icon: "🚀",
