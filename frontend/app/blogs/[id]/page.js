@@ -39,7 +39,7 @@ const BlogDetail = ({ params }) => {
       </div>
       <div className="flex-[2]">
         <Image
-          className="w-full"
+          className="w-full sticky top-0"
           src={ImageRef(blog?.imagePath)}
           alt={blog.title}
           width={1000}
