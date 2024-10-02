@@ -1,7 +1,7 @@
 "use client";
 
 import BlogCard from "@/components/BlogCard";
-import axios from "axios";
+import instance from "@/helper/axios-intance";
 import { useEffect, useState } from "react";
 
 const BlogPage = () => {
@@ -29,12 +29,7 @@ const BlogPage = () => {
           blogs.map((blog) => (
             <BlogCard
               key={blog._id}
-              data={{
-                title: blog.title,
-                photo: `http://localhost:8080${blog.imagePath}`,
-                createdAt: blog.createdAt,
-                createdBy: blog.createdBy,
-              }}
+              blog={blog}
             />
           ))
         }
