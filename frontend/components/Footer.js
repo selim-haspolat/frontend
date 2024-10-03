@@ -77,7 +77,7 @@ const Footer = () => {
           <div className="flex justify-between">
             {socialMedia.map((social, index) => (
               // social.icon bir bileşen olduğu için büyük harfle çağırman gerekiyor
-              <Button variant="ghost" animation={false} className={"!p-0"}>
+              <Button key={index} variant="ghost" animation={false} className={"!p-0"}>
                 <social.icon key={index} size={30} className="text-primary" />
               </Button>
             ))}

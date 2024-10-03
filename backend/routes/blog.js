@@ -3,6 +3,7 @@ import multer from "multer";
 import Blog from "../models/blog.js";
 import fs from "fs";
 import { createError } from "../utils/error.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
@@ -39,7 +40,7 @@ const upload = multer({
   },
 });
 
-router.post("/", upload.single("photo"), async (req, res, next) => {
+router.post("/", verifyAdmin, upload.single("photo"), async (req, res, next) => {
   try {
     const { title, content } = req.body;
     const file = req.file;
